@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="uft-8">
+        <style type="text/css">
+            *{
+                border: 10;
+                margin: 10;
+                padding: 10;
+            }
+            
+            h1{
+                color: rgb(224, 175, 175);
+                font-size: 2.0rem; 
+            }
+
+            h2{
+                color: rgb(140, 235, 148);
+                font-size: 2.0rem; 
+            }
+
+            section{
+                box-sizing: border-box;
+                display: inline-block;
+                padding: 2rem;
+                width: 80%;
+            }
+
+            input[type="text"]{
+                background-color: #eee;
+                border: 1px solid gray;
+                font-size: 2.5rem;
+            }
+            
+        </style>
+    </head>
+        <body>
+            <div class="imagen">
+                <img src="imagenes/Vector.png" alt="Imagen de inicio" width="30px">
+            </div>
+            <section class="principal">
+                <h1 class="titulo-principal">Juego del Ahorcado</h1>
+                <h2>Agrege sus palabras favoritas a este juego</h2>
+            </section>
+            
+            <script type="text/javascript">
+
+                let palabras = Array("HTML","JAVASCRIPT","JAVA","CSS","BASIC","FOXPRO","PROGRAMAR","LINKEDIN","FIGMA","TRELLO",).push(" "," "," ",);
+
+                <section>
+                        <table>
+                            <tr id="a">
+                                <td class="keys">A</td>
+                                <td class="keys">B</td>
+                                <td class="keys">C</td>
+                                <td class="keys">D</td>
+                                <td class="keys">E</td>
+                                <td class="keys">F</td>
+                                <td class="keys">G</td>
+                                <td class="keys">H</td>
+                                <td class="keys">I</td>
+                            </tr>
+                            <tr id="b">
+                                <td class="keys">J</td>
+                                <td class="keys">K</td>
+                                <td class="keys">L</td>
+                                <td class="keys">M</td>
+                                <td class="keys">N</td>
+                                <td class="keys">Ñ</td>
+                                <td class="keys">O</td>
+                                <td class="keys">P</td>
+                                <td class="keys">Q</td>
+                            </tr>
+                            <tr id="c">
+                                <td class="keys">R</td>
+                                <td class="keys">S</td>
+                                <td class="keys">T</td>
+                                <td class="keys">U</td>
+                                <td class="keys">V</td>
+                                <td class="keys">W</td>
+                                <td class="keys">X</td>
+                                <td class="keys">Y</td>
+                                <td class="keys">Z</td>
+                            </tr>
+                        </table>
+                                        
+                </section>
+
+            </script>
+
+        <section>
+            <input type="text" id="Palabra" placeholder="Escriba aqui su palabra:"><br>
+            
+            <ul>
+               <li><a href="ahorcado_2.html"><img src="imagenes/guardar y regresar.png" width="30%" height="20%"></a></li>
+               <li><a href="ahorcado_2.html"><img src="imagenes/cancelar.png" width="30%" height="20%"></a></li>
+            </ul>
+        </section>
+    </head>
+    </body>
+</html>    
+

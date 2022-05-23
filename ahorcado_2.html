@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="uft-8">
+        <title>Juego del Ahorcado</title>
+        <style type="text/css">
+            *{
+                border: 10;
+                margin: 10;
+                padding: 10;
+            }
+            
+            section{
+                box-sizing: border-box;
+                display: inline-block;
+                padding: 1rem;
+                width: 40%;
+            }
+            #lienzo{
+                border: 2px solid steelblue;
+                width: 500px;
+                height: 300px;
+            }
+            input[type="text"]{
+                background-color: #eee;
+                border: 1px solid gray;
+                font-size: 1.3rem;
+            }
+            input[type="button"]{
+                background-color: steelblue;
+                color: white;
+                font-size: 1.9rem;
+                padding: 0.3rem;
+            }
+           
+            div{
+                font-size: 1.7rem;
+                margin: 0.5rem;
+                padding: 0.3rem;
+            }
+            div#frase{
+                border: 1px solid steelblue;
+                padding: 0.4rem;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="imagen">
+            <img src="imagenes/Vector.png" alt="Imagen de inicio" width="30px">
+        </div>
+
+        <section>
+            <input type="text" id="letra" placeholder="Escribe la letra"> <input type="button" id="boton" value="Comprobar"> <br>
+            
+            <ul>
+               <li><a href="ahorcado_2.html"><img src="imagenes/Iniciar juego.png" width="50%" height="30%"></a></li>
+               <li><a href="agregar_palabra.html"><img src="imagenes/agregar palabra.png" width="50%" height="30%"></a></li>
+            </ul>
+            
+            <div id="frase">
+
+            </div>
+            
+            <div id="vida">
+                El numero de vidas que quedan son: 7
+            </div>
+        </section>
+        <section>
+            <canvas id="lienzo">
+                Tu navegador no acepta Canvas 
+            </canvas>
+        </section>
+        <script type="text/javascript">
+            let palabras = Array("HTML","JAVASCRIPT","JAVA","CSS","BASIC","FOXPRO","PROGRAMAR","LINKEDIN","FIGMA","TRELLO",);
+            let palabraOc = ""; //Palabra oculta
+            let palabraAdi = ""; //Palabra que va adivinando
+            let vidas = 7; 
+            document.getElementById("boton").addEventListener("click",comprobar);
+
+            iniciar();
+
+            function iniciar(){
+                palabraOc=palabras[Math.floor(Math.random()*palabras.length)];
+                for (let i=0;i<palabraOc.length;i++) {
+                    palabraAdi=palabraAdi+"_ ";
+                }
+                document.getElementById("frase").innerHTML=palabraAdi;
+            }
+        
+            function comprobar(){
+                let letra= document.getElementById("letra").value.toUpperCase();
+                palabraOc= palabraOc.toUpperCase();
+                let nuevo= "";
+                for (let i=0;i<palabraOc.length;i++) {
+                    if(letra==palabraOc[i]){
+                        nuevo = nuevo + letra + " ";
+                    }else{
+                        nuevo = nuevo + palabraAdi[i*2] + " ";
+                    }
+                }
+                if(nuevo==palabraAdi){
+                    vidas--;
+                    document.getElementById("vida").innerHTML="El numero de vidas que quedan son: " + vidas;
+                }
+                palabraAdi = nuevo;
+                document.getElementById("frase").innerHTML=palabraAdi;
+            
+                if(vidas==0){
+                    alert("Perdiste-No te rindas-Fin del Juego");
+                }
+                if(palabraAdi.search("_")==-1){
+                    alert("Ganaste-Felicidades-Fin del Juego");
+                }
+
+                document.getElementById("letra").value="";
+                document.getElementById("letra").focus();
+
+                dibujar();
+            }
+
+            function dibujar(){
+                var canvas=document.getElementById("lienzo");
+                if (canvas.getContext) {
+                    var ctx = canvas.getContext("2d");
+                    //Esto dibuja la base del ahorcado
+                    ctx.beginPath();  
+                    ctx.moveTo(130,300);
+                    ctx.lineTo(130,10);
+                    ctx.lineTo(150,10);
+                    ctx.lineTo(150,20);
+                    ctx.stroke();
+                   
+                    if(vidas<=3){ //Dibujar cabeza
+                        ctx.beginPath();
+                        ctx.arc(150, 40, 20, 0, Math.PI * 2);
+                        ctx.stroke();
+                    }
+                    if(vidas<=2){ //Dibujar cuerpo
+                        ctx.beginPath();
+                        ctx.moveTo(150,60);
+                        ctx.lineTo(150,100);
+                        ctx.stroke();  
+                    }
+                    if(vidas<=1){ // Brazos
+                        ctx.beginPath();
+                        ctx.moveTo(150,60);
+                        ctx.lineTo(130,100);
+                        ctx.stroke();
+                    
+                        ctx.beginPath();
+                        ctx.moveTo(150,60);
+                        ctx.lineTo(170,100);
+                        ctx.stroke();
+                    }
+                    if(vidas==0){ // Piernas
+                        ctx.beginPath();
+                        ctx.moveTo(150,100);
+                        ctx.lineTo(170,130);
+                        ctx.stroke();
+
+                        ctx.beginPath();
+                        ctx.moveTo(150,100);
+                        ctx.lineTo(130,130);
+                        ctx.stroke();
+                    
+                    }
+
+                }
+            }
+            
+       </script>
+
+    <footer>
+        <section class="principal">
+            <h1 class="titulo-principal">El muñeco aparece a partir de la vida numero 4</h1>
+        </section>
+
+        <ul>
+            <a href="https://www.linkedin.com/in/ariel-bruno/"><img src="imagenes/salir del juego.png" width="20%" height="10%"></a>
+        </ul>
+
+        <div>
+            <clase div="derechos de autor">
+            <p>&copy Copyright Ariel Bruno 2022</p>
+        </div>
+
+        <div class="Red">
+            <a href="https://github.com/Ariel2134"><img src="imagenes/github.bmp" alt="Github"></a>
+        </div>
+    </footer>
+
+    </body>
+</html>
